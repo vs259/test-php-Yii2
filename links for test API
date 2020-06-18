@@ -6,3 +6,6 @@ curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news"
 
 Вывод одной новости
 curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news&news_id=2
+
+Вывод всех новостей выбранной рубрики
+curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news&rubric_id=5
