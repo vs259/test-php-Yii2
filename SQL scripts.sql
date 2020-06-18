@@ -156,3 +156,21 @@ and     length(@pv := concat(@pv, ',', rubric_id))
 ;
 
 
+-- Все новости выбранной рубрики и вложенных
+select distinct n.* 
+from news_rubric as nr 
+	inner join news as n
+		on n.news_id = nr.news_id
+where nr.rubric_id in (
+select  r.rubric_id
+from rubric as r
+where r.rubric_id = 2
+union 
+select  rubric_id
+from    (select * from rubric
+order by parent_id, rubric_id) as rubric_sorted,
+(select @pv := 2) initialisation
+where   find_in_set(parent_id, @pv)
+and     length(@pv := concat(@pv, ',', rubric_id)) 
+)
+;
