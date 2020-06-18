@@ -12,3 +12,6 @@ curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news&
 
 Вывод выбранной рубрики и всех вложенных относительно выбранной рубрики рубрик 
 curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=rubric&rubric_id=3
+
+Вывод всех новостей выбранной и вложенных рубрик
+curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news&parent_id=5"
