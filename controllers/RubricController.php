@@ -45,12 +45,16 @@ class RubricController extends ActiveController
                             and     length(@pv := concat(@pv, ',', rubric_id)) "
                     , ['id' => $rubric_id])
                     ->queryAll();
-            return $rubrics;
         }        
         else{
-            return Rubric::find()->all();        
+//            return Rubric::find()->all();        
+            $rubrics = (new \yii\db\Query())
+                    ->select('rubric.*')
+                    ->from('rubric')
+                    ->where(['>','rubric.rubric_id', 1])
+                    ->all();
         }
-    
+        return $rubrics;
     }
 }
 
