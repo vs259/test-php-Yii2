@@ -142,7 +142,7 @@ with recursive r as (
   select * from r 
   ; 
 
- 
+-- поэтому - второй вариант 
 select  r.rubric_id, r.rubric_title, r.parent_id
 from rubric as r
 where r.rubric_id = 3
