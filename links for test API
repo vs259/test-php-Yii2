@@ -9,3 +9,6 @@ curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news&
 
 Вывод всех новостей выбранной рубрики
 curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news&rubric_id=5
+
+Вывод всех вложенных относительно выбранной рубрик 
+curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=rubric&rubric_id=3
