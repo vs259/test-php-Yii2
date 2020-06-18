@@ -1,0 +1,5 @@
+Вывод списка рубрик
+curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=rubric"
+
+Вывод сиска новостей
+curl -i -H "Accept:application/json" "http://dingo.moscow/web/index.php/?r=news"
