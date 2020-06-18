@@ -1,53 +1,53 @@
 CREATE TABLE `rubric` (
   `rubric_id` int(11) NOT NULL AUTO_INCREMENT,
-  `rubric_title` varchar(100) NOT NULL DEFAULT 'Введите название',
+  `rubric_title` varchar(100) NOT NULL DEFAULT 'Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ',
   `parent_id` int(11)  NULL,
    PRIMARY KEY (`rubric_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('Рубрика не задана', null);
+VALUES('Р СѓР±СЂРёРєР° РЅРµ Р·Р°РґР°РЅР°', null);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('Общество', null);
+VALUES('РћР±С‰РµСЃС‚РІРѕ', null);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('День города', null);
+VALUES('Р”РµРЅСЊ РіРѕСЂРѕРґР°', null);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('Спорт', null);
+VALUES('РЎРїРѕСЂС‚', null);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('городская жизнь', 2);
+VALUES('РіРѕСЂРѕРґСЃРєР°СЏ Р¶РёР·РЅСЊ', 2);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('выборы', 2);
+VALUES('РІС‹Р±РѕСЂС‹', 2);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('салюты', 3);
+VALUES('СЃР°Р»СЋС‚С‹', 3);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('детская площадка', 3);
+VALUES('РґРµС‚СЃРєР°СЏ РїР»РѕС‰Р°РґРєР°', 3);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('0-3 года', 8);
+VALUES('0-3 РіРѕРґР°', 8);
 
 INSERT INTO rubric
 (rubric_title, parent_id)
-VALUES('3-7 лет', 8);
+VALUES('3-7 Р»РµС‚', 8);
 
 CREATE TABLE news (
   `news_id` int(11) NOT NULL AUTO_INCREMENT,
-  `news_title` varchar(100) NOT NULL DEFAULT 'Введите заголовок новости',
+  `news_title` varchar(100) NOT NULL DEFAULT 'Р’РІРµРґРёС‚Рµ Р·Р°РіРѕР»РѕРІРѕРє РЅРѕРІРѕСЃС‚Рё',
   news_text text NULL,
    PRIMARY KEY (`news_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -63,12 +63,12 @@ CREATE TABLE `news_rubric` (
   CONSTRAINT `news_rubric_rubric_FK` FOREIGN KEY (`rubric_id`) REFERENCES `rubric` (`rubric_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE news_rubric ADD CONSTRAINT news_rubric_UN UNIQUE KEY (rubric_id,news_id); -- Не иметь одинаковых пар
+ALTER TABLE news_rubric ADD CONSTRAINT news_rubric_UN UNIQUE KEY (rubric_id,news_id); -- РќРµ РёРјРµС‚СЊ РѕРґРёРЅР°РєРѕРІС‹С… РїР°СЂ
 
 
 INSERT INTO news
 (news_title, news_text)
-VALUES('В Москве предложили сдвинуть начало рабочего дня', 'Текст новости о начале рабочего дня ....');
+VALUES('Р’ РњРѕСЃРєРІРµ РїСЂРµРґР»РѕР¶РёР»Рё СЃРґРІРёРЅСѓС‚СЊ РЅР°С‡Р°Р»Рѕ СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ', 'РўРµРєСЃС‚ РЅРѕРІРѕСЃС‚Рё Рѕ РЅР°С‡Р°Р»Рµ СЂР°Р±РѕС‡РµРіРѕ РґРЅСЏ ....');
 
 INSERT INTO news_rubric
 (rubric_id, news_id)
@@ -76,30 +76,39 @@ VALUES(5, 1);
 
 INSERT INTO news
 (news_title, news_text)
-VALUES('Новость из рубрики Салюты', 'Сегодня салютов не ожидается ....');
+VALUES('РќРѕРІРѕСЃС‚СЊ РёР· СЂСѓР±СЂРёРєРё РЎР°Р»СЋС‚С‹', 'РЎРµРіРѕРґРЅСЏ СЃР°Р»СЋС‚РѕРІ РЅРµ РѕР¶РёРґР°РµС‚СЃСЏ ....');
 
+-- РЎРѕРѕС‚РЅРµСЃРµРЅРёРµ РЅРѕРІРѕСЃС‚Рё Рє РЅРµСЃРєРѕР»СЊРєРёРј СЂСѓР±СЂРёРєР°Рј
 INSERT INTO news_rubric
 (rubric_id, news_id)
 VALUES(5, 2);
 
+INSERT INTO news_rubric
+(rubric_id, news_id)
+VALUES(7, 2);
+
+INSERT INTO news_rubric
+(rubric_id, news_id)
+VALUES(3, 2);
 
 
--- Список всех рубрик
+
+-- РЎРїРёСЃРѕРє РІСЃРµС… СЂСѓР±СЂРёРє
 select * 
 from rubric as r
 ;
 
--- Список новостей
+-- РЎРїРёСЃРѕРє РЅРѕРІРѕСЃС‚РµР№
 select * 
 from news 
 ;
 
--- Корелляция
+-- РљРѕСЂРµР»Р»СЏС†РёСЏ
 select * 
 from news_rubric 
 ;
 
--- К какм рубрикам относится новость
+-- Рљ РєР°РєРёРј СЂСѓР±СЂРёРєР°Рј РѕС‚РЅРѕСЃРёС‚СЃСЏ РЅРѕРІРѕСЃС‚СЊ
 select r.*
 from news as n
 	right join news_rubric as nr
@@ -110,8 +119,8 @@ where n.news_id = 2
 order by r.rubric_id
 ;
 
--- Стуктура рубрик
--- На хостинге не работает с WITH т.к. версия mySQL там ниже 5,7
+-- РЎС‚СѓРєС‚СѓСЂР° СЂСѓР±СЂРёРє
+-- РќР° С…РѕСЃС‚РёРЅРіРµ РЅРµ СЂР°Р±РѕС‚Р°РµС‚ СЃ WITH С‚.Рє. РІРµСЂСЃРёСЏ mySQL С‚Р°Рј РЅРёР¶Рµ 5,7
 with recursive r as ( 
       select rubric_id, parent_id, rubric_title 
       from rubric 
