@@ -119,6 +119,14 @@ where n.news_id = 2
 order by r.rubric_id
 ;
 
+-- Все новости выбранной рубрики
+select n.* 
+from news_rubric as nr 
+	inner join news as n
+		on n.news_id = nr.news_id
+where nr.rubric_id = 5
+;
+
 -- Стуктура рубрик
 -- На хостинге не работает с WITH т.к. версия mySQL там ниже 5,7
 with recursive r as ( 
